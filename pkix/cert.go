@@ -161,3 +161,10 @@ func (c *Certificate) Export() ([]byte, error) {
 	}
 	return buf.Bytes(), nil
 }
+
+func (c *Certificate) GetNotAfter() (time.Time, error) {
+	if err := c.buildX509Certificate(); err != nil {
+		return time.Now(), err
+	}
+	return c.crt.NotAfter, nil
+}

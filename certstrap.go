@@ -48,6 +48,7 @@ func main() {
 		cmd.NewCertRequestCommand(),
 		cmd.NewSignCommand(),
 		cmd.NewRevokeCommand(),
+		cmd.RegenCRLCommand(),
 	}
 	app.Before = func(c *cli.Context) error {
 		return cmd.InitDepot(c.String("depot-path"))
